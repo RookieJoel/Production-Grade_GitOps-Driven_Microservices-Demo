@@ -4,6 +4,8 @@ metadata:
   name: http-app-route
   namespace: boutique-app
 spec:
+  hostnames:
+    - "boutique.local"
   parentRefs:
   - group: gateway.networking.k8s.io
     namespace: default
