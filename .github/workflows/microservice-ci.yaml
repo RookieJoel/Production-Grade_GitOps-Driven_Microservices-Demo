@@ -22,7 +22,6 @@ jobs:
         run: |
           OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
           echo "IMAGE_NAME=ghcr.io/${OWNER}/microservices-demo/${{ inputs.service }}:sha-${{ github.sha }}" >> $GITHUB_ENV
-          echo "IMAGE_LATEST=ghcr.io/${OWNER}/microservices-demo/${{ inputs.service }}:latest" >> $GITHUB_ENV
 
       # -------------------
       # Docker Buildx (cache support)
@@ -68,6 +67,4 @@ jobs:
       # -------------------
       - name: Push Image
         run: |
-          docker tag $IMAGE_NAME $IMAGE_LATEST
           docker push $IMAGE_NAME
-          docker push $IMAGE_LATEST
